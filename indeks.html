@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdITyaFx-web | ELITE ZONE</title>
+    <style>
+        body { margin: 0; padding: 0; background-color: #000; color: #0f0; font-family: 'Courier New', monospace; overflow: hidden; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        canvas { position: absolute; top: 0; left: 0; z-index: -1; }
+        .container { background: rgba(0, 0, 0, 0.9); padding: 30px; border: 2px solid #ff0000; box-shadow: 0 0 40px rgba(255, 0, 0, 0.6); text-align: center; max-width: 500px; z-index: 1; position: relative; cursor: pointer; }
+        h1 { color: #ff0000; font-size: 2.2rem; text-transform: uppercase; animation: glitch 0.2s infinite; }
+        @keyframes glitch { 0% { transform: translate(2px, 2px); } 50% { transform: translate(-2px, -2px); color: #fff; } 100% { transform: translate(1px, -1px); } }
+        p { font-size: 1rem; margin: 12px 0; color: #fff; text-shadow: 1px 1px #000; }
+        .btn-group { margin-top: 25px; }
+        .btn { display: inline-block; padding: 12px 24px; margin: 8px; text-decoration: none; font-weight: bold; border-radius: 4px; transition: 0.3s; text-transform: uppercase; border: none; cursor: pointer; }
+        .whatsapp { background-color: #25D366; color: #fff; }
+        .tiktok { background-color: #000; color: #fff; border: 2px solid #fff; }
+        .btn:hover { transform: scale(1.1); box-shadow: 0 0 20px #ff0000; }
+        .footer { position: absolute; bottom: 10px; font-size: 0.6rem; color: #666; width: 100%; text-align: center; }
+    </style>
+</head>
+<body onclick="playMusic()">
+
+    <canvas id="matrix"></canvas>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <h1>AdITyaFx-web</h1>
+        <p>Milik: <strong>AdITyaFx-web</strong></p>
+        <p>Created by: <strong>Rizky</strong></p>
+        <hr style="border: 1px solid #ff0000;">
+        <p>Web ini pertama kali dibuat dengan serius.</p>
+        <p>Bukan unsur gelap, ilegal, atau pasar gelap.</p>
+        <p style="color: #ff0000; font-weight: bold;">"USER FANS RIZKY DETECTED!"</p>
+
+        <div class="btn-group">
+            <a href="https://wa.me/6289507728694" class="btn whatsapp" target="_blank">WhatsApp</a>
+            <a href="https://www.tiktok.com/@rizkyadityafx.5?_r=1&_t=ZS-93CZu2J2sWS" class="btn tiktok" target="_blank">TikTok</a>
+        </div>
+        <p style="font-size: 0.7rem; color: #555;">(Klik di mana saja untuk putar musik)</p>
+    </div>
+
+    [span_5](start_span)<div class="footer">SYSTEM: OMEGA-NULL v6.0[span_5](end_span)</div>
+
+    <script>
+        // Matrix Effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        const chars = "0123456789ABCDEF";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#0f0";
+            ctx.font = fontSize + "px arial";
+            drops.forEach((y, i) => {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, y * fontSize);
+                if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            });
+        }
+        setInterval(draw, 33);
+
+        // Music Logic
+        function playMusic() {
+            const music = document.getElementById('bgMusic');
+            music.play();
+        }
+    </script>
+</body>
+</html>
+
