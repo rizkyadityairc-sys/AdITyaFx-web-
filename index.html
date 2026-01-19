@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEM TERKUNCI - AdITyaFx-Encryption</title>
+    <style>
+        body {
+            background-color: #7a0000; /* Merah gelap peringatan */
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 50px;
+        }
+        .container {
+            background-color: #000;
+            border: 5px solid #ff0000;
+            padding: 30px;
+            display: inline-block;
+            box-shadow: 0 0 50px rgba(0,0,0,1);
+            max-width: 800px;
+        }
+        h1 { font-size: 3rem; margin-bottom: 10px; text-transform: uppercase; }
+        .timer { font-size: 2.5rem; color: #ff0000; font-weight: bold; margin: 20px 0; border: 2px solid white; display: inline-block; padding: 10px 20px; }
+        .info-box { text-align: left; background: #1a1a1a; padding: 20px; border-left: 5px solid #ff0000; margin-top: 20px; }
+        input[type="text"] { width: 80%; padding: 10px; margin: 10px 0; background: #333; border: 1px solid #ff0000; color: #0f0; }
+        .btn-pay { background: #ff0000; color: white; padding: 15px 30px; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; }
+        .btn-pay:hover { background: #aa0000; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>OOPS! FILE ANDA TERKUNCI</h1>
+        <p>Seluruh dokumen, foto, database, dan file penting lainnya telah dienkripsi oleh <strong>AdITyaFx-Encryption</strong>.</p>
+        
+        <div class="timer" id="timer">48:00:00</div>
+        <p>File Anda akan dihapus permanen jika pembayaran tidak diterima sebelum waktu habis.</p>
+
+        <div class="info-box">
+            <h3>Apa yang terjadi?</h3>
+            <p>Satu-satunya cara untuk mendapatkan kembali file Anda adalah dengan membeli Key Dekripsi. Jangan mencoba merusak sistem atau file akan hancur selamanya.</p>
+            
+            <h3>Berapa yang harus dibayar?</h3>
+            <p>Kirimkan <strong>0.05 BTC</strong> ke alamat wallet di bawah ini:</p>
+            <input type="text" value="1AdITyaFxBtcAddressExample777" readonly>
+            
+            <p>Setelah kirim, masukkan ID Transaksi di sini:</p>
+            <input type="text" placeholder="Masukkan TXID Anda...">
+            <br><br>
+            <button class="btn-pay">Konfirmasi Pembayaran</button>
+        </div>
+
+        <p style="margin-top: 20px; font-size: 0.8rem;">[AdITyaFx-web Security System v6.0]</p>
+    </div>
+
+    <script>
+        // Timer Sederhana
+        let time = 48 * 3600;
+        setInterval(() => {
+            let h = Math.floor(time / 3600);
+            let m = Math.floor((time % 3600) / 60);
+            let s = time % 60;
+            document.getElementById('timer').innerHTML = 
+                (h < 10 ? "0"+h : h) + ":" + (m < 10 ? "0"+m : m) + ":" + (s < 10 ? "0"+s : s);
+            if (time > 0) time--;
+        }, 1000);
+    </script>
+</body>
+</html>
