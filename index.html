@@ -3,69 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SISTEM TERKUNCI - AdITyaFx-Encryption</title>
+    <title>AdITyaFx-web | ELITE ZONE</title>
     <style>
-        body {
-            background-color: #7a0000; /* Merah gelap peringatan */
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 50px;
-        }
-        .container {
-            background-color: #000;
-            border: 5px solid #ff0000;
-            padding: 30px;
-            display: inline-block;
-            box-shadow: 0 0 50px rgba(0,0,0,1);
-            max-width: 800px;
-        }
-        h1 { font-size: 3rem; margin-bottom: 10px; text-transform: uppercase; }
-        .timer { font-size: 2.5rem; color: #ff0000; font-weight: bold; margin: 20px 0; border: 2px solid white; display: inline-block; padding: 10px 20px; }
-        .info-box { text-align: left; background: #1a1a1a; padding: 20px; border-left: 5px solid #ff0000; margin-top: 20px; }
-        input[type="text"] { width: 80%; padding: 10px; margin: 10px 0; background: #333; border: 1px solid #ff0000; color: #0f0; }
-        .btn-pay { background: #ff0000; color: white; padding: 15px 30px; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; }
-        .btn-pay:hover { background: #aa0000; }
+        body { margin: 0; padding: 0; background-color: #000; color: #0f0; font-family: 'Courier New', monospace; overflow: hidden; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        canvas { position: absolute; top: 0; left: 0; z-index: -1; }
+        .container { background: rgba(0, 0, 0, 0.9); padding: 30px; border: 2px solid #ff0000; box-shadow: 0 0 40px rgba(255, 0, 0, 0.6); text-align: center; max-width: 500px; z-index: 1; position: relative; cursor: pointer; }
+        h1 { color: #ff0000; font-size: 2.2rem; text-transform: uppercase; animation: glitch 0.2s infinite; }
+        @keyframes glitch { 0% { transform: translate(2px, 2px); } 50% { transform: translate(-2px, -2px); color: #fff; } 100% { transform: translate(1px, -1px); } }
+        p { font-size: 1rem; margin: 12px 0; color: #fff; text-shadow: 1px 1px #000; }
+        .btn-group { margin-top: 25px; }
+        .btn { display: inline-block; padding: 12px 24px; margin: 8px; text-decoration: none; font-weight: bold; border-radius: 4px; transition: 0.3s; text-transform: uppercase; border: none; cursor: pointer; }
+        .whatsapp { background-color: #25D366; color: #fff; }
+        .tiktok { background-color: #000; color: #fff; border: 2px solid #fff; }
+        .btn:hover { transform: scale(1.1); box-shadow: 0 0 20px #ff0000; }
+        .footer { position: absolute; bottom: 10px; font-size: 0.6rem; color: #666; width: 100%; text-align: center; }
     </style>
 </head>
-<body>
+<body onclick="playMusic()">
+
+    <canvas id="matrix"></canvas>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="container">
-        <h1>OOPS! FILE ANDA TERKUNCI</h1>
-        <p>Seluruh dokumen, foto, database, dan file penting lainnya telah dienkripsi oleh <strong>AdITyaFx-Encryption</strong>.</p>
-        
-        <div class="timer" id="timer">48:00:00</div>
-        <p>File Anda akan dihapus permanen jika pembayaran tidak diterima sebelum waktu habis.</p>
+        <h1>AdITyaFx-web</h1>
+        <p>Milik: <strong>AdITyaFx-web</strong></p>
+        <p>Created by: <strong>Rizky</strong></p>
+        <hr style="border: 1px solid #ff0000;">
+        <p>Web ini pertama kali dibuat dengan serius.</p>
+        <p>Bukan unsur gelap, ilegal, atau pasar gelap.</p>
+        <p style="color: #ff0000; font-weight: bold;">"USER FANS RIZKY DETECTED!"</p>
 
-        <div class="info-box">
-            <h3>Apa yang terjadi?</h3>
-            <p>Satu-satunya cara untuk mendapatkan kembali file Anda adalah dengan membeli Key Dekripsi. Jangan mencoba merusak sistem atau file akan hancur selamanya.</p>
-            
-            <h3>Berapa yang harus dibayar?</h3>
-            <p>Kirimkan <strong>0.05 BTC</strong> ke alamat wallet di bawah ini:</p>
-            <input type="text" value="1AdITyaFxBtcAddressExample777" readonly>
-            
-            <p>Setelah kirim, masukkan ID Transaksi di sini:</p>
-            <input type="text" placeholder="Masukkan TXID Anda...">
-            <br><br>
-            <button class="btn-pay">Konfirmasi Pembayaran</button>
+        <div class="btn-group">
+            <a href="https://wa.me/6289507728694" class="btn whatsapp" target="_blank">WhatsApp</a>
+            <a href="https://www.tiktok.com/@rizkyadityafx.5?_r=1&_t=ZS-93CZu2J2sWS" class="btn tiktok" target="_blank">TikTok</a>
         </div>
-
-        <p style="margin-top: 20px; font-size: 0.8rem;">[AdITyaFx-web Security System v6.0]</p>
+        <p style="font-size: 0.7rem; color: #555;">(Klik di mana saja untuk putar musik)</p>
     </div>
 
+    [span_5](start_span)<div class="footer">SYSTEM: OMEGA-NULL v6.0[span_5](end_span)</div>
+
     <script>
-        // Timer Sederhana
-        let time = 48 * 3600;
-        setInterval(() => {
-            let h = Math.floor(time / 3600);
-            let m = Math.floor((time % 3600) / 60);
-            let s = time % 60;
-            document.getElementById('timer').innerHTML = 
-                (h < 10 ? "0"+h : h) + ":" + (m < 10 ? "0"+m : m) + ":" + (s < 10 ? "0"+s : s);
-            if (time > 0) time--;
-        }, 1000);
+        // Matrix Effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        const chars = "0123456789ABCDEF";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#0f0";
+            ctx.font = fontSize + "px arial";
+            drops.forEach((y, i) => {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, y * fontSize);
+                if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            });
+        }
+        setInterval(draw, 33);
+
+        // Music Logic
+        function playMusic() {
+            const music = document.getElementById('bgMusic');
+            music.play();
+        }
     </script>
 </body>
 </html>
