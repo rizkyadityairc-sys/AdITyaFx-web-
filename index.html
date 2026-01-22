@@ -1,126 +1,210 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AdITyaFx | Hidden Directory</title>
+    <title>AdITyaFx-Web: The Unchained Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Orbitron:wght@400;700&display=swap');
+        
         body {
-            background-color: #050505;
-            color: #c0c0c0;
-            font-family: "Courier New", monospace;
-            margin: 0;
-            padding: 20px;
+            background-color: #000000;
+            color: #00FF00; /* Warna teks hijau ala terminal hacker */
+            font-family: 'Space Mono', monospace;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            border: 1px solid #333;
-            padding: 20px;
-            background: #0a0a0a;
+
+        .hacker-bg {
+            background: 
+                radial-gradient(circle, #0a0a0a 1px, transparent 1px) 0 0 / 20px 20px,
+                linear-gradient(rgba(0,255,0,0.05) 1px, transparent 1px) 0 0 / 100% 20px,
+                #000000;
+            background-attachment: fixed;
+            position: relative;
         }
-        .header {
-            text-align: center;
-            border-bottom: 2px solid #ff0000;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+
+        .hacker-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+            z-index: 1;
         }
-        .header h1 {
-            color: #ff0000;
-            font-size: 1.5rem;
-            text-shadow: 0 0 5px #ff0000;
+
+        .hacker-text-glow {
+            text-shadow: 0 0 5px #00FF00, 0 0 10px #00CC00;
         }
-        .warning {
+
+        .neon-border {
+            border: 1px solid rgba(0,255,0,0.2);
+            box-shadow: 0 0 10px rgba(0,255,0,0.2);
+        }
+
+        .typewriter h1 {
+            overflow: hidden; /* Ensures the content is not revealed until the animation */
+            border-right: .15em solid #00FF00; /* The typwriter cursor */
+            white-space: nowrap; /* Keeps the content on a single line */
+            margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .15em; /* Adjust as needed */
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+
+        /* The typing animation */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        /* The typewriter cursor effect */
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00FF00; }
+        }
+
+        /* For the moving words */
+        .moving-words-container {
+            overflow: hidden;
+            width: 100%;
+            height: 40px; /* Adjust height as needed */
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .moving-word {
+            position: absolute;
+            white-space: nowrap;
+            font-size: 1.25rem; /* text-xl */
+            color: #00FF00;
+            opacity: 0.8;
+            animation: move-and-fade 15s linear infinite;
+        }
+
+        .moving-word:nth-child(1) { animation-delay: 0s; left: -100%; }
+        .moving-word:nth-child(2) { animation-delay: 3s; left: -120%; }
+        .moving-word:nth-child(3) { animation-delay: 6s; left: -80%; }
+        .moving-word:nth-child(4) { animation-delay: 9s; left: -150%; }
+        .moving-word:nth-child(5) { animation-delay: 12s; left: -90%; }
+
+
+        @keyframes move-and-fade {
+            0% { transform: translateX(0); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { transform: translateX(200vw); opacity: 0.8; }
+            100% { transform: translateX(200vw); opacity: 0; }
+        }
+
+        /* Glowing button effect */
+        .glowing-button {
+            position: relative;
+            background: #00FF00;
             color: #000;
-            background: #ffcc00;
-            padding: 5px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 0.8rem;
-            margin-bottom: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
-        .link-section {
-            margin-bottom: 30px;
+
+        .glowing-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(0,255,0,0.4);
+            border-radius: 50%;
+            transition: all 0.6s ease-out;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            z-index: 0;
         }
-        .link-section h2 {
-            font-size: 1rem;
-            color: #00ff00;
-            border-bottom: 1px solid #222;
+
+        .glowing-button:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
         }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        li {
-            margin: 10px 0;
-            font-size: 0.9rem;
-        }
-        .onion-link {
-            color: #5555ff;
-            text-decoration: none;
-        }
-        .onion-link:hover {
-            text-decoration: underline;
-        }
-        .desc {
-            color: #777;
-            font-size: 0.8rem;
-            display: block;
-        }
-        .footer {
-            text-align: center;
-            font-size: 0.7rem;
-            margin-top: 50px;
-            color: #444;
+
+        .glowing-button span {
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
-<body>
+<body class="hacker-bg">
 
-<div class="container">
-    <div class="header">
-        <h1>ADITYAFX - HIDDEN SERVICE v3</h1>
-    </div>
+    <div class="hacker-overlay"></div>
 
-    <div class="warning">
-        NOTICE: ENCRYPTION LEVEL 4096-BIT ACTIVE. YOUR IP IS BEING MASKED.
-    </div>
+    <header class="relative z-20 text-center py-20 px-4 min-h-screen flex flex-col justify-center items-center">
+        <h1 class="text-6xl md:text-8xl font-black heading-font text-green-400 hacker-text-glow mb-4">
+            AdITyaFx<span class="text-white">.web</span> ⚡
+        </h1>
+        <div class="typewriter max-w-4xl text-2xl md:text-4xl text-white font-bold mb-8">
+            <h1 class="hacker-text-glow">Hello, I am the developer of this web.</h1>
+        </div>
+        <p class="max-w-3xl text-lg md:text-xl text-gray-300 mb-10 leading-relaxed">
+            I am a **self-taught** developer, independent, and do not rely on AI to build my empire. My code is my weapon, my logic is my shield. I forge digital realities with raw skill and relentless determination 😈💪.
+        </p>
 
-    <div class="link-section">
-        <h2>Financial Services</h2>
-        <ul>
-            <li>
-                <a href="#" class="onion-link">adityafx_pay77x.onion</a>
-                <span class="desc">Anonymous BTC Mixer and Laundry.</span>
-            </li>
-        </ul>
-    </div>
+        <div class="moving-words-container">
+            <span class="moving-word hacker-text-glow">// UNCHAINED</span>
+            <span class="moving-word hacker-text-glow">// AUTODIDACT</span>
+            <span class="moving-word hacker-text-glow">// SYSTEM BREAKER</span>
+            <span class="moving-word hacker-text-glow">// PURE CODE</span>
+            <span class="moving-word hacker-text-glow">// DOMINATOR</span>
+        </div>
+    </header>
 
-    <div class="link-section">
-        <h2>Intelligence & Data</h2>
-        <ul>
-            <li>
-                <a href="#" class="onion-link">database_leak_fx.onion</a>
-                <span class="desc">Archive of 2026 data breaches.</span>
-            </li>
-            <li>
-                <a href="#" class="onion-link">terminal_access_root.onion</a>
-                <span class="desc">Remote shell access portal.</span>
-            </li>
-        </ul>
-    </div>
+    <section id="contact" class="relative z-20 py-20 px-4 bg-black/80 border-t-2 border-green-500/50">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold heading-font hacker-text-glow mb-8">Establish Contact, If You Dare ☠️</h2>
+            <p class="text-gray-400 mb-10 text-lg">
+                Are you ready to witness true power? Connect with the architect of digital realms.
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-6 mb-12">
+                <a href="https://wa.me/6289682234179" target="_blank" class="glowing-button relative flex items-center gap-3 px-8 py-3 rounded-full text-lg font-bold transition-all duration-300">
+                    <span class="relative z-10"><i class="fab fa-whatsapp"></i> WhatsApp</span>
+                </a>
+                <a href="https://www.tiktok.com/rizkyadityafx.5?_r=1&_t=zs-93hrbolrd9r" target="_blank" class="glowing-button relative flex items-center gap-3 px-8 py-3 rounded-full text-lg font-bold transition-all duration-300 bg-white text-black">
+                    <span class="relative z-10"><i class="fab fa-tiktok"></i> TikTok</span>
+                </a>
+                <a href="https://www.instagram.com/ky_dityaa14?igsh=mxh5cdm5ejrtzzrxba==" target="_blank" class="glowing-button relative flex items-center gap-3 px-8 py-3 rounded-full text-lg font-bold transition-all duration-300 bg-white text-black">
+                    <span class="relative z-10"><i class="fab fa-instagram"></i> Instagram</span>
+                </a>
+            </div>
 
-    <div class="link-section">
-        <h2>Personal Links</h2>
-        <ul>
-            <li><a href="https://t.me/salam_prof" class="onion-link">Telegram Secure Channel</a></li>
-        </ul>
-    </div>
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold heading-font hacker-text-glow mb-4">My Command Center Location 📍</h3>
+                <p class="text-gray-400 mb-6 text-lg">
+                    Find my digital stronghold. The coordinates are yours to decipher.
+                </p>
+                <div class="w-full max-w-xl mx-auto neon-border p-4 bg-black/70 rounded-lg">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15830.40774641973!2d112.7937395!3d-7.2917711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" 
+                        width="100%" 
+                        height="350" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <p class="text-gray-500 mt-4 text-sm">
+                        *Note: The map embed uses a general area. The code "6mmx586f+2w" is a <a href="https://plus.codes/" target="_blank" class="text-green-400 hover:underline">Plus Code</a> for a specific location. Use it wisely.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="footer">
-        Generated by AdITyaFx-Systems | No logs kept.
-    </div>
-</div>
+    <footer class="relative z-20 py-10 text-center text-gray-700 text-xs border-t border-green-500/10">
+        <p>
+            &copy; 2026 AdITyaFx.web. All Rights Reserved. Mastered by AdITyaFxGPT 🤖.
+        </p>
+    </footer>
 
 </body>
-</html>
+    </html>
+    
